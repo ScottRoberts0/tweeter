@@ -1,0 +1,14 @@
+#page-header{
+  height: 400px;
+  width: 100%;
+  text-align: center;
+  margin-top: 90px;
+  background-image: url("../images/always-grey.png");
+  background-color: darkseagreen;
+  color: #f4f1ec;
+}
+
+#page-header img {
+  padding-top: 30px;
+}
+

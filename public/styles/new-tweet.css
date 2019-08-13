@@ -1,0 +1,45 @@
+section{
+  margin-bottom: 1em;
+}
+
+textarea {
+  background-color: transparent;
+  width: 100%; 
+  border: none;
+  border-bottom: 4px solid #545149;
+  height: auto;
+  outline: none;
+  resize: none;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-weight: bold;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-weight: bold;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-weight: bold;
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-weight: bold;
+}
+.counter {
+  float: right;
+  font-family: 'Bungee', cursive;
+
+}
+.tweet-but{
+  background-color: #4056A1;
+  font-family: 'Bungee', cursive;
+  color: #FFFF;
+  border: none;
+}
+
+.red-text{
+  color: red;
+}
+
+.dark-text{
+  color: #545149;
+}

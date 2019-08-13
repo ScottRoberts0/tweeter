@@ -1,32 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Meta Information -->
-    <title>Tweeter - Home Page</title>
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+<head>
+  <!-- Meta Information -->
+  <title>Tweeter - Home Page</title>
 
-    <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- External CSS -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
 
-    <!-- External JS -->
-    <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+  <!-- Google Fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Bungee|Source+Sans+Pro:300,300i,600,700i&display=swap"
+    rel="stylesheet">
 
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-  <body>
+  <!-- NAV CSS -->
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
 
-    <!-- Top nav bar (fixed) -->
-    <nav>
-      <span>tweeter</span>
-    </nav>
+  <!-- HEADER CSS -->
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
 
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-    </main>
+  <!-- NEWTWEET CSS -->
+  <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
 
-  </body>
+  <!-- tweet-layout -->
+  <link rel="stylesheet" href="/styles/tweet-layout.css" type="text/css" />
+
+  <!-- External JS -->
+  <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+
+  <!-- App JS -->
+  <script type="text/javascript" src="/scripts/app.js"></script>
+
+  <!-- CHAR-COUNTER.JS -->
+  <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+
+  <!-- fontAwesome -->
+  <script src="https://kit.fontawesome.com/34dfb70563.js"></script>
+</head>
+
+<body>
+
+  <!-- Top nav bar (fixed) -->
+  <nav>
+
+    <div id="tweeter-header">tweeter</div>
+    <div id="write-tweet">
+      <strong>Write</strong> a new tweet
+      <div><i class="fas fa-angle-double-down"></i></div>
+    </div>
+  </nav>
+
+  <header id="page-header">
+    <div>
+      <img src="/images/profile-hex.png">
+    </div>
+
+    <div>
+      <h2><strong>Scott Roberts</strong></h2>
+    </div>
+  </header>
+  <!-- Page-specific (main) content here -->
+  <main class="container">
+    <section class="new-tweet">
+      <h2>Compose Tweet</h2>
+      <form method="POST" action="/tweets">
+        <textarea name="text" placeholder="What are you humming about?" rows="1"></textarea>
+        <input class="tweet-but" type="submit" value="Tweet">
+        <span class="counter">140</span>
+      </form>
+    </section>
+
+    <div id="tweets-container">
+      <article class="tweet">
+        <header>
+          <span><img src="/images/manager.png">Bill Murray</span>
+              <span class="tweet-user">@THE_REAL_KANYE_WEST</span>
+          </header>
+            <p>
+              Wow! What a tweeterific app!
+              </p>
+       
+        <footer>
+          <span>
+            10 days ago
+          </span>
+          <span class="tweetcons">
+              <i class="fas fa-flag"></i>
+              <i class="fas fa-retweet"></i>
+              <i class="fas fa-heart"></i>
+          </span>
+        </footer>
+      </article>
+      </div>
+
+
+   
+
+
+  </main>
+
+</body>
+
 </html>
