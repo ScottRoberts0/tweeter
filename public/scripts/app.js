@@ -31,12 +31,10 @@ function timeSince(date) {
   return Math.floor(seconds) + " seconds";
 }
 
-
-
 const createTweetElement = function (tweetdata) {
 
   const created = timeSince(tweetdata.created_at) + " ago";
-  
+
   const markup = $(`
   <article class="tweet">
   <header>
@@ -57,25 +55,20 @@ const createTweetElement = function (tweetdata) {
     </span>
   </footer>
   </article>
-
   `);
-
   return markup;
 }
 
-const renderTweets = function(tweets){
+const renderTweets = function (tweets) {
   $(document).ready(function () {
-   let tweet;
-    for(let key of tweets){
+    let tweet;
+    for (let key of tweets) {
       console.log(key)
       tweet = createTweetElement(key)
 
       $('#tweets-container').append(tweet);
     }
-   
   });
-
-
 }
 
 const data = [
@@ -95,7 +88,8 @@ const data = [
     "user": {
       "name": "Descartes",
       "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
+      "handle": "@rd"
+    },
     "content": {
       "text": "Je pense , donc je suis"
     },
@@ -103,7 +97,19 @@ const data = [
   }
 ]
 
-
 renderTweets(data);
-// console.log(new Date(tweetData.created_at))
-// console.log(timeSince(tweetData.created_at));
+
+
+$(document).ready(function () {
+  const $form = $('#tweet-form')
+  $form.submit(function (event) {
+    const formData = $form.serialize();
+    event.preventDefault();
+
+    console.log('Button clicked, performing ajax call...');
+    $.ajax({url: "/tweets", type: 'POST', data: formData })
+    .then(function (morePostsHtml) {
+      console.log('Success: ', morePostsHtml);
+    });
+  });
+});
