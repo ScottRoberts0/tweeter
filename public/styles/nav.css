@@ -25,3 +25,24 @@ nav {
 .fa-angle-double-down{
   color: red;
   }
+
+
+#tweet-btn:hover{
+  cursor: pointer;
+}
+
+/*https://stackoverflow.com/questions/35990445/how-to-move-a-div-up-and-down-infinitely-in-css3 */
+.fa-angle-double-down {
+    -webkit-animation: action 1s infinite  alternate;
+    animation: action 1s infinite  alternate;
+}
+
+
+@-webkit-keyframes action {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-5px); }
+}
+@keyframes action {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-5px); }
+}

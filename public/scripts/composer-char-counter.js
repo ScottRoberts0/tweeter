@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $("textarea").keydown( function(){
+  $("textarea").keyup( function(){
     let length = $(this).val().length;
     let chars = 140 - length;
    

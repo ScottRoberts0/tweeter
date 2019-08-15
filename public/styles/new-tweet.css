@@ -43,3 +43,13 @@ textarea {
 .dark-text{
   color: #545149;
 }
+
+#error{
+  border: 0.3em solid red;
+  color: red;
+  text-align:center;
+}
+
+
+
+

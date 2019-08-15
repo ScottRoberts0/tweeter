@@ -3,6 +3,10 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+
+
+
+
 function timeSince(date) {
   //stolen from stackoverflow https://stackoverflow.com/questions/3177836/how-to-format-time-since-xxx-e-g-4-minutes-ago-similar-to-stack-exchange-site
   let seconds = Math.floor((new Date() - date) / 1000);
@@ -31,10 +35,17 @@ function timeSince(date) {
   return Math.floor(seconds) + " seconds";
 }
 
+const escape =  function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 const createTweetElement = function (tweetdata) {
 
   const created = timeSince(tweetdata.created_at) + " ago";
 
+ 
   const markup = $(`
   <article class="tweet">
   <header>
@@ -42,7 +53,7 @@ const createTweetElement = function (tweetdata) {
         <span class="tweet-user">${tweetdata.user.handle}</span>
     </header>
       <p>
-        ${tweetdata.content.text}
+        ${escape(tweetdata.content.text)}
       </p>
   <footer>
     <span>
@@ -59,57 +70,75 @@ const createTweetElement = function (tweetdata) {
   return markup;
 }
 
-const renderTweets = function (tweets) {
-  $(document).ready(function () {
-    let tweet;
-    for (let key of tweets) {
-      console.log(key)
-      tweet = createTweetElement(key)
 
+const renderTweets = function (tweets) {
+ 
+    let tweet;
+    $('#tweets-container').empty();
+    for (let key of tweets) {
+      tweet = createTweetElement(key)
       $('#tweets-container').append(tweet);
     }
+}
+
+
+const loadtweets = function(){
+  $.ajax({url: "/tweets", type: "GET"})
+  .then(function(responseData){
+    renderTweets(responseData);
   });
 }
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
-
-renderTweets(data);
-
-
 $(document).ready(function () {
-  const $form = $('#tweet-form')
-  $form.submit(function (event) {
-    const formData = $form.serialize();
-    event.preventDefault();
+  loadtweets();
+  $('#error').hide();
+  $('#topbutton').hide();
+  const $form = $('#tweet-form');
 
+  $form.submit(function (event) {
+    const textareaVal = $("textarea").val();
+    const tweetlength = Number($(".counter").text());
+    event.preventDefault();
+    
+    console.log(typeof tweetlength);
+    
+    if(tweetlength < 0){
+      $('#msg').text("ERROR: Tweet Length Over 140 Chars");
+      $('#error').show();
+    }else if(textareaVal === ""){
+      $('#msg').text("ERROR: Tweet is EMPTY");
+      $('#error').show();
+    }
+    else{
+      $('#error').slideUp();
+    const formData = $form.serialize();
+ 
     console.log('Button clicked, performing ajax call...');
+
     $.ajax({url: "/tweets", type: 'POST', data: formData })
-    .then(function (morePostsHtml) {
-      console.log('Success: ', morePostsHtml);
+    .then(function () {
+      loadtweets();
+      console.log('Success!');
     });
+  }
   });
+
+  $('#tweet-btn').click(function(){
+    $(".new-tweet").toggle("slow");
+  });
+
+  $(window).scroll(function(){
+    
+    if($(this).scrollTop() > 300){
+      $('#topbutton').fadeIn();
+    }else{
+      $('#topbutton').fadeOut();
+    }
+  });
+
+  $('#topbutton').click(function(){
+    window.scrollTo(0, 0);
+  })
+
 });
+

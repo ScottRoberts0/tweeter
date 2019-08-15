@@ -48,7 +48,7 @@
     <div id="tweeter-header">tweeter</div>
     <div id="write-tweet">
       <strong>Write</strong> a new tweet
-      <div><i class="fas fa-angle-double-down"></i></div>
+      <div id="tweet-btn"><i class="fas fa-angle-double-down"></i></div>
     </div>
   </nav>
 
@@ -64,6 +64,11 @@
   <!-- Page-specific (main) content here -->
   <main class="container">
     <section class="new-tweet">
+      <div id="error">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span id="msg">STUFF</span>
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
       <h2>Compose Tweet</h2>
       <form id="tweet-form" method="POST" action="/tweets">
         <textarea name="text" placeholder="What are you humming about?" rows="1"></textarea>
@@ -97,7 +102,7 @@
 
 
    
-
+      <i id="topbutton" class="fas fa-chevron-circle-up fa-2x"></i>
 
   </main>
 

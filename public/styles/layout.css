@@ -27,7 +27,18 @@ main {
   margin-left: 5%;
 }
 
+#topbutton{
+  z-index: 99;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0.75em;
+  color: red;
+}
 
+#topbutton:hover{
+  cursor: pointer;
+}
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
