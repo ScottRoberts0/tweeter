@@ -25,6 +25,7 @@ main {
   width: 90%;
   margin-right:5%;
   margin-left: 5%;
+  flex: 2;
 }
 
 #topbutton{
@@ -34,10 +35,19 @@ main {
   right: 0;
   margin: 0.75em;
   color: red;
+  opacity: 0.40;
 }
 
 #topbutton:hover{
   cursor: pointer;
+  opacity: 0.75;
+}
+
+.content{
+  margin-top: 90px;
+  display:flex;
+  align-items: stretch;
+  flex-direction: column;
 }
 
 /*

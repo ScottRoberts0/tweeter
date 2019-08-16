@@ -11,10 +11,8 @@ nav {
   justify-content: space-between;
 }
 
-
 #tweeter-header{
   font-family: 'Bungee', cursive;
-
 }
 
 #write-tweet{
@@ -24,7 +22,7 @@ nav {
 
 .fa-angle-double-down{
   color: red;
-  }
+}
 
 
 #tweet-btn:hover{

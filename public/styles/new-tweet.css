@@ -7,7 +7,6 @@ textarea {
   width: 100%; 
   border: none;
   border-bottom: 4px solid #545149;
-  height: auto;
   outline: none;
   resize: none;
 }
@@ -15,20 +14,25 @@ textarea {
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   font-weight: bold;
 }
+
 ::-moz-placeholder { /* Firefox 19+ */
   font-weight: bold;
 }
+
 :-ms-input-placeholder { /* IE 10+ */
   font-weight: bold;
 }
+
 :-moz-placeholder { /* Firefox 18- */
   font-weight: bold;
 }
+
 .counter {
   float: right;
   font-family: 'Bungee', cursive;
 
 }
+
 .tweet-but{
   background-color: #4056A1;
   font-family: 'Bungee', cursive;
@@ -36,6 +40,11 @@ textarea {
   border: none;
 }
 
+.tweet-but:hover{
+ background-color: #545149;
+  cursor: pointer;
+  box-shadow: grey;
+}
 .red-text{
   color: red;
 }
@@ -48,8 +57,5 @@ textarea {
   border: 0.3em solid red;
   color: red;
   text-align:center;
+  width: 100%;
 }
-
-
-
-
